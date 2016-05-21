@@ -1,28 +1,25 @@
 import winston from 'winston'
 import sendError from 'micro'
 
+export const log = new winston.Logger({
+  transports: [
+    new winston.transports.Console({
+      level: 'debug',
+      handleExceptions: true,
+      colorize: true
+    })
+  ]
+})
+
 export function wrap (fn) {
   return async (req, res) => {
-    const logger = log()
     try {
-      logger.info(`\u001b[96m]<-- ${req.method.toUpperCase()} ${req.url}`)
+      log.info(`<-- \u001b[96m${req.method.toUpperCase()}\u001b[39m ${req.url}`)
       await fn.apply(this, [req, res])
-      logger.info(`\u001b[96m]--> ${req.method.toUpperCase()} ${req.url}`)
+      log.info(`--> \u001b[96m${req.method.toUpperCase()}\u001b[39m ${req.url}`)
     } catch (err) {
-      logger.error(`\u001b[39mxxx ${req.method.toUpperCase()} ${req.url}`, err)
+      log.error(`xxx \u001b[96]m${req.method.toUpperCase()}\u001b[39m ${req.url}`, err)
       sendError(req, res, err)
     }
   }
-}
-
-export function log () {
-  return new winston.Logger({
-    transports: [
-      new winston.transports.Console({
-        level: 'debug',
-        handleExceptions: true,
-        colorize: true
-      })
-    ]
-  })
 }

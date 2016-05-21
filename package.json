@@ -1,8 +1,8 @@
 {
   "name": "@rafaeljesus/events-util",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Utilities shared between api and worker",
-  "main": "build/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "rm -rf lib/* && babel . --ignore test,circle.yml,node_modules -d lib",
     "prepublish": "npm run build",
