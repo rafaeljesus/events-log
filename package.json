@@ -1,5 +1,5 @@
 {
-  "name": "events-util",
+  "name": "@rafaeljesus/events-util",
   "version": "1.0.0",
   "description": "Utilities shared between api and worker",
   "main": "build/index.js",
