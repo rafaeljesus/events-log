@@ -1,0 +1,9 @@
+node_modules/
+.nyc_output
+public/
+lib/
+build/
+npm-debug.log
+coverage/
+tags
+**/*.swp

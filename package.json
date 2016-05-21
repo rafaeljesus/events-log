@@ -1,0 +1,55 @@
+{
+  "name": "events-util",
+  "version": "1.0.0",
+  "description": "Utilities shared between api and worker",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "rm -rf lib/* && babel . --ignore test,circle.yml,node_modules -d lib",
+    "prepublish": "npm run build",
+    "test": " npm run lint && NODE_ENV=test ava",
+    "lint": "standard --verbose | snazzy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafaeljesus/events-util.git"
+  },
+  "author": "Rafael Jesus <rafaelljesus86@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rafaeljesus/events-util/issues"
+  },
+  "homepage": "https://github.com/rafaeljesus/events-util#readme",
+  "standard": {
+    "parser": "babel-eslint"
+  },
+  "ava": {
+    "files": [
+      "test/*spec.js"
+    ],
+    "failFast": true,
+    "require": [
+      "babel-register",
+      "babel-polyfill"
+    ]
+  },
+  "dependencies": {
+    "micro": "2.0.0",
+    "winston": "^2.2.0"
+  },
+  "devDependencies": {
+    "ava": "^0.14.0",
+    "babel-cli": "^6.9.0",
+    "babel-eslint": "^6.0.4",
+    "babel-plugin-syntax-async-functions": "^6.8.0",
+    "babel-plugin-transform-async-to-generator": "^6.8.0",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-polyfill": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-register": "^6.9.0",
+    "snazzy": "^4.0.0",
+    "standard": "^7.1.0"
+  },
+  "engines": {
+    "node": ">=4.4.2"
+  }
+}
